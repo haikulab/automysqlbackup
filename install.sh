@@ -37,6 +37,13 @@ upgrade_config_file () {
     echo ""
     echo "# Basic Settings"
     echo ""
+    echo "# Allow mysqldump/mysql to use an account's .my.cnf to specify credentials"
+    echo "# 'yes' enables mysql default my.cnf usage"
+    echo "# '/path/to/my.cnf' will use /path/to/my.cnf as extra defaults input"
+    echo "# this is necessary to avoid password warnings on mysql 5.6.9 or later"
+    echo "# see http://bugs.mysql.com/bug.php?id=68034 for more info"
+    echo "#CONFIG_mysql_dump_use_mycnf_for_userpass='no'"
+    echo ""
     echo "# Username to access the MySQL server e.g. dbuser"
     if isSet USERNAME; then
       printf '%s=%q\n' CONFIG_mysql_dump_username "${USERNAME-}"
